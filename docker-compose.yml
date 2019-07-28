@@ -2,24 +2,7 @@ version: '2'
 volumes:
         unifi-data:
         unms-data:
-        nginx-data:
-        letsencrypt:
 services:
-        ddclient:
-                build: ./ddclient-cloudflare
-                privileged: true
-        nginx:
-                build: ./nginx
-                privileged: true
-                ports:
-                        - "443:443"
-                volumes:
-                        - "nginx-data:/app/data"
-                        - "letsencrypt:/etc/letsencrypt"
-
-                links:
-                        - "unifi"
-                        - "unms"
         unifi:
                 build: ./unifi
                 ports:
